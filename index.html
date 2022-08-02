@@ -1,0 +1,114 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital@1&display=swap');
+
+        body {
+            
+            font-family: sans-serif;
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            background-color: #d9bcf0;
+
+
+
+        }
+
+        #hour,
+        #minute,
+        #second,
+        #session {
+            margin: 7px;
+            border-radius: 7.5px;
+            background-color: rgb(253, 218, 223);
+            padding: 50px;
+            box-shadow: 5px 5px 10px #897697,
+                -5px -5px 10px #ffffff;
+            font-size: -webkit-xxx-large;
+            /* -webkit-text-stroke: 2px solid red; */
+            font-weight: 800;
+            font-family: 'Righteous', cursive;
+
+        }
+
+        .txt {
+            margin: auto;
+            left: 43%;
+            top: 100px;
+            position: absolute;
+            background-color: transparent;
+            font-size: xxx-large;
+            font-weight: 600;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="txt">Real Time</div>
+    <div class="container" onload="showtime()">
+
+        <br>
+        <div id="hour"></div>
+        <div id="minute"></div>
+        <div id="second"></div>
+        <div id="session"></div>
+
+
+    </div>
+
+    <script>
+
+        function showTime() {
+            var date = new Date();
+            var h = date.getHours();
+            var m = date.getMinutes();
+            var s = date.getSeconds();
+            var session = "AM";
+
+            if (h == 0) {
+                h = 12;
+            }
+
+            if (h > 12) {
+                h = h - 12;
+                session = "PM";
+            }
+
+            h = (h < 10) ? "0" + h : h;
+            m = (m < 10) ? "0" + m : m;
+            s = (s < 10) ? "0" + s : s;
+
+
+            document.getElementById("hour").innerText = h;
+            document.getElementById("minute").innerText = m;
+            document.getElementById("second").innerText = s;
+            document.getElementById("session").innerText = session;
+
+
+            setTimeout(showTime, 1000);
+
+        }
+
+        showTime();
+
+
+
+    </script>
+</body>
+
+</html>
